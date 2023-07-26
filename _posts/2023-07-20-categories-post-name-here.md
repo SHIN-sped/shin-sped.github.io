@@ -1,6 +1,23 @@
 ---
 title: "7/18 과제제출"
-excerpt: "자기소개 
+excerpt: "데일리 제출"
+
+categories:
+  - Categories4
+tags:
+  - [tag1, tag2]
+
+permalink: /categories4/post-name-here-4/
+
+toc: true
+toc_sticky: true
+
+date: 2023-07-20
+last_modified_at: 2023-07-20
+---
+
+## 🦥 본문
+
 1.본 강의를 참여하게 된 계기
 기업프로젝트를 통해서 현업에 쓰이는 실무를 경험해보고 실무를 적절하게 활용해보고 싶습니다
 
@@ -23,21 +40,3 @@ https://www.allmusic.com/
 장르에 따른 분류와 별점으로 앨범을 분류해냈고 사용자 별점을 통한 DB 관리와 머신러닝 기법이 들어있고 가장 중요한 전문성을 가지고 있어 음악사이트로서 수준높은 서비스를 제공하고있기때문입니다
 또한 웹 구성에서도 완성도가 있고 모바일 환경에서도 구성에 맞게 제공하고 있습니다
 "
-
-categories:
-  - Categories1
-tags:
-  - [정보통신산업진흥원, NIPA]
-
-permalink: /categories1/post-name-here/
-
-toc: true
-toc_sticky: true
-
-date: 2020-05-21
-last_modified_at: 2021-10-09
----
-
-## 🦥 본문
-
-본문은 여기에 ...
