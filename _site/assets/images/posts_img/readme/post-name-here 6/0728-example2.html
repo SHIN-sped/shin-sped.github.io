@@ -1,0 +1,24 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>Company Project Example</title>
+</head>
+<body>
+<h1 id="title">Welcome to Our Website</h1>
+<h1 id="subTitle">Discover Amazing Products</h1>
+
+<script>
+    // DOMContentLoaded 이벤트를 사용하여 문서가 로드된 후에 실행
+    document.addEventListener('DOMContentLoaded', () => {
+    // <h1> 요소들을 가져오기
+    const titleElement = document.getElementById('title');
+    const subTitleElement = document.getElementById('subTitle');
+
+    // 가져온 <h1> 요소들을 수정
+    titleElement.textContent = 'Welcome to Our New Website';
+    subTitleElement.style.color = 'blue';
+    });
+</script>
+</body>
+</html>

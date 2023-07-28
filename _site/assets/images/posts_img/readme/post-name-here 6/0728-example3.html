@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>ALLMUSIC.COM Example</title>
+</head>
+<body>
+  <h1 id="artistName">Artist Name</h1>
+  <button id="changeArtistBtn">Change Artist</button>
+
+  <script>
+    // 예시로 사용할 아티스트 이름들
+    const artists = ['Beyonce', 'Coldplay', 'Ed Sheeran', 'Lady Gaga', 'Maroon 5'];
+    const artistNameElement = document.getElementById('artistName');
+    const changeArtistBtn = document.getElementById('changeArtistBtn');
+
+    // 아티스트 이름 변경 함수
+    function changeArtistName() {
+      const randomIndex = Math.floor(Math.random() * artists.length);
+      const randomArtist = artists[randomIndex];
+      artistNameElement.textContent = randomArtist;
+    }
+
+    // 버튼 클릭 시 아티스트 이름 변경
+    changeArtistBtn.addEventListener('click', changeArtistName);
+
+    // 페이지 로드 시 초기 아티스트 이름 설정
+    changeArtistName();
+  </script>
+</body>
+</html>

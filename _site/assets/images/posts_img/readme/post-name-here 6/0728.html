@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Example</title>
+</head>
+<body>
+  <h1 id="title">ALLMUSIC.COM</h1>
+
+  <script>
+    // <h1> 요소를 가져오기 위해 script를 가장 상단에 위치시킴
+    const titleElement = document.getElementById('title');
+
+    // <h1> 요소가 아직 파싱되지 않았을 때 가져오려는 시도
+    console.log(titleElement); // 출력: null
+
+    // DOMContentLoaded 이벤트를 사용하여 문서가 로드된 후에 실행
+    document.addEventListener('DOMContentLoaded', () => {
+      // 이 시점에는 <h1> 요소가 이미 파싱되어 가져올 수 있음
+      const titleElement = document.getElementById('title');
+      console.log(titleElement); // 출력: <h1 id="title">ALLMUSIC.COM</h1>
+    });
+
+    
+  </script>
+</body>
+</html>
+
