@@ -1,5 +1,5 @@
 ---
-title: "[NIPA]AI+웹개발 취업캠프 SW기초 2주차 1회"
+title: "[NIPA]AI+웹개발 취업캠프 SW기초 2주차 4회"
 excerpt: "데일리 학습일지"
 
 categories:
@@ -7,13 +7,13 @@ categories:
 tags:
   - [정보통신산업진흥원, NIPA, AI교육, 프로젝트, 유데미, IT개발캠프, 개발자부트캠프, 프론트엔드, 백엔드, AI웹개발취업캠프, 취업캠프, 개발취업캠프]
 
-permalink: /categories1/post-name-here-5/
+permalink: /categories1/post-name-here-6/
 
 toc: true
 toc_sticky: true
 
-date: 2023-07-24
-last_modified_at: 2023-07-24
+date: 2023-07-27
+last_modified_at: 2023-07-27
 ---
 
 ## 🦥 본문
