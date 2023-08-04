@@ -1,5 +1,5 @@
 ---
-title: "[NIPA]AI+웹개발 취업캠프 SW기초 1주차 2회"
+title: "[NIPA]AI+웹개발 취업캠프 SW기초 1주차 3회"
 excerpt: "데일리 제출"
 
 categories:
