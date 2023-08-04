@@ -3,11 +3,11 @@ title: "7/18 과제제출"
 excerpt: "데일리 제출"
 
 categories:
-  - Categories4
+  - Categories1
 tags:
   - [tag1, tag2]
 
-permalink: /categories4/post-name-here-4/
+permalink: /categories1/post-name-here-1/
 
 toc: true
 toc_sticky: true
