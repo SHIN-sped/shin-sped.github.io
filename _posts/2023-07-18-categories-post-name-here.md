@@ -1,6 +1,6 @@
 ---
 title: "[NIPA]AI+웹개발 취업캠프 SW기초 1주차 1회"
-excerpt: "데일리 제출"
+excerpt: "데일리"
 
 categories:
   - Categories1
@@ -12,8 +12,8 @@ permalink: /categories1/post-name-here-1/
 toc: true
 toc_sticky: true
 
-date: 2023-07-20
-last_modified_at: 2023-07-20
+date: 2023-07-18
+last_modified_at: 2023-07-18
 ---
 
 ## 🦥 본문
