@@ -483,12 +483,14 @@ while num < 30 :
 
 
 
+
+
 ## Input
 
 
 
-```python
-#input
+```javascript
+
 a = int(input("정수 입력 : "))
 print("a의 값 : {}".format(a))
 print(type(a))
@@ -554,11 +556,13 @@ print("{0:*<10}".format(10))
 
 
 
+
+
 ## 함수
 
 
 
-```python
+```javascript
 
 # 함수
 def sum (a,b) :
