@@ -485,7 +485,9 @@ while num < 30 :
 
 ## Input
 
-```Python
+
+
+```python
 #input
 a = int(input("정수 입력 : "))
 print("a의 값 : {}".format(a))
@@ -545,13 +547,18 @@ print("{0:*>10}".format(10))
 print("{0:*<10}".format(10))
 
 
+
 ```
+
+
 
 
 
 ## 함수
 
-```Python
+
+
+```python
 
 # 함수
 def sum (a,b) :
@@ -598,7 +605,11 @@ print(list1[1](2,1))
 
 
 
+
+
 ## 예제문제
+
+
 
 ```python
 # datatype
@@ -869,7 +880,10 @@ def stu_upd () :
 stu_upd()
 
 
+
 ```
+
+
 
 
 
