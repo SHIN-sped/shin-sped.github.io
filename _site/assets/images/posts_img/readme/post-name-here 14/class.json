@@ -1,0 +1,32 @@
+{
+    "name": "Michael Jackson",
+    "description": "Michael Jackson was an American singer, songwriter, and dancer. He is regarded as one of the greatest entertainers of all time. Jackson was born in Gary, Indiana, and began his career as a member of the Jackson 5 in the late 1960s. He went on to release 10 solo studio albums, all of which were commercially successful. Jackson's most famous albums include Off the Wall (1979), Thriller (1982), and Bad (1987). Thriller is the best-selling album of all time, with over 66 million copies sold worldwide. Jackson died in 2009 at the age of 50.",
+    "release_date": "1958-08-29",
+    "genre": "Pop, R&B, Soul",
+    "style": "Pop, R&B, Soul",
+    "label": "Epic Records",
+    "track_list": [
+      "Billie Jean",
+      "Beat It",
+      "Thriller",
+      "Wanna Be Startin' Somethin'",
+      "Human Nature",
+      "P.Y.T. (Pretty Young Thing)",
+      "The Girl Is Mine",
+      "Dirty Diana",
+      "Smooth Criminal",
+      "Leave Me Alone"
+    ],
+    "video_list": [
+      "Thriller",
+      "Billie Jean",
+      "Beat It",
+      "Black or White",
+      "Smooth Criminal"
+    ],
+    "radio_episode_list": [
+      "Michael Jackson: The King of Pop",
+      "Michael Jackson: The Life and Times",
+      "Michael Jackson: The Documentary"
+    ]
+  }
