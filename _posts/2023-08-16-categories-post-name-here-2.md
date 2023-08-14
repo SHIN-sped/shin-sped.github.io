@@ -7,7 +7,7 @@ categories:
 tags:
   - [정보통신산업진흥원, NIPA, AI교육, 프로젝트, 유데미, IT개발캠프, 개발자부트캠프, 프론트엔드, 백엔드, AI웹개발취업캠프, 취업캠프, 개발취업캠프]
 
-permalink: /categories2/post-name-here-7/
+permalink: /categories2/post-name-here-8/
 
 toc: true
 toc_sticky: true
