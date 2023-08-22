@@ -414,18 +414,236 @@ print(rufus.report_toys())
 
 ```python
 # forms.py
+from flask_wtf import FlaskForm
+from wtforms import StringField, IntegerField, SubmitField
 
+# 추가 양식(Form) 정의
+class AddForm(FlaskForm):
+    name = StringField('강아지 이름:')
+    submit = SubmitField('강아지 추가')
+
+# 삭제 양식(Form) 정의
+class DelForm(FlaskForm):
+    id = IntegerField('삭제할 강아지의 ID 번호:')
+    submit = SubmitField('강아지 삭제')
 ```
 
-```
+```python
+# adoption_site.py
+from forms import AddForm, DelForm
+from flask import Flask, render_template, url_for, redirect
+from flask_sqlalchemy import SQLAlchemy
+from flask_migrate import Migrate
 
+app = Flask(__name__)
+app.config['SECRET_KEY'] = 'mysecretkey'
+
+# SQL 데이터베이스 및 모델 설정
+basedir = os.path.abspath(os.path.dirname(__file__))
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(basedir, 'data.sqlite')
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+
+db = SQLAlchemy(app)
+Migrate(app, db)
+
+# Puppy 모델 정의
+class Puppy(db.Model):
+    __tablename__ = 'puppies'
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.Text)
+
+    def __init__(self, name):
+        self.name = name
+
+    def __repr__(self):
+        return f"Puppy name: {self.name}"
+
+# 뷰 및 양식(Form)을 사용한 화면 정의
+@app.route('/')
+def index():
+    return render_template('home.html')
+
+@app.route('/add', methods=['GET', 'POST'])
+def add_pup():
+    form = AddForm()
+
+    if form.validate_on_submit():
+        name = form.name.data
+
+        # 새로운 강아지 데이터베이스에 추가
+        new_pup = Puppy(name)
+        db.session.add(new_pup)
+        db.session.commit()
+
+        return redirect(url_for('list_pup'))
+
+    return render_template('add.html', form=form)
+
+@app.route('/list')
+def list_pup():
+    # 데이터베이스에서 강아지 리스트 가져오기
+    puppies = Puppy.query.all()
+    return render_template('list.html', puppies=puppies)
+
+@app.route('/delete', methods=['GET', 'POST'])
+def del_pup():
+    form = DelForm()
+
+    if form.validate_on_submit():
+        id = form.id.data
+        pup = Puppy.query.get(id)
+        db.session.delete(pup)
+        db.session.commit()
+
+        return redirect(url_for('list_pup'))
+    
+    return render_template('delete.html', form=form)
+
+if __name__ == '__main__':
+    app.run(debug=True)
 ```
 
 Datasqlite
 
+![datasqlite4](../_site/assets/images/posts_img/readme/post-name-here 21/images/datasqlite4.png)
+
+## 
+
+```html
+# templates
+# add.html
+{% extends "base.html" %}
+{% block content %}
+<div class="jumbotron">
+  <h1>입양이 필요한 강아지가 있나요?</h1>
+  <p>아래 양식을 사용하여 새로운 강아지를 추가하세요:</p>
+  <form method="POST">
+      <!-- 이 hidden_tag은 CSRF 보안 기능입니다. -->
+      {{ form. hidden_tag() }}
+      {{ form.name.label }} {{ form.name() }}
+      {{ form. submit() }}
+  </form>
+</div>
+{% endblock %}
+
+# base.html
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+    <title>Adoption</title>
+  </head>
+  <body>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="navbar-nav">
+      <a class="nav-item nav-link" href="{{ url_for('index') }}">홈</a>
+      <a class="nav-item nav-link" href="{{ url_for('add_pup') }}">강아지 추가</a>
+      <a class="nav-item nav-link" href="{{ url_for('list_pup') }}">강아지 목록</a>
+      <a class="nav-item nav-link" href="{{ url_for('del_pup') }}">강아지 삭제</a>
+    </div>
+</nav>
+
+    {% block content %}
+
+    {% endblock %}
+  </body>
+</html>
+
+url_for 함수를 사용하여 생성된 URL로 연결됩니다. 각각의 링크는 해당 페이지로 이동하게 됩니다.
+
+# delete.html
+{% extends "base.html" %}
+{% block content %}
+<div class="jumbotron">
+  <h1>강아지가 입양되었나요?</h1>
+  <p>양식을 작성하여 목록에서 강아지를 제거하세요.</p>
+  <form method="POST">
+      <!-- 이 hidden_tag은 CSRF 보안 기능입니다. -->
+      {{ form. hidden_tag() }}
+      {{ form.id.label }} {{ form.id() }}
+      {{ form. submit() }}
+  </form>
+</div>
+{% endblock %}
+
+# home.html
+{% extends "base.html" %}
+{% block content %}
+<div class="jumbotron">
+  <h1>어서오세요, 입양 페이지입니다</h1>
+  <p>네비게이션 바에서 원하는 링크를 선택해주세요.</p>
+</div>
+{% endblock %}
+
+# list.html
+{% extends "base.html" %}
+{% block content %}
+<div class="jumbotron">
+  <h1>모든 이용 가능한 강아지 목록입니다.</h1>
+  <ul>
+    {% for pup in puppies %}
+    <li>{{pup}}</li>
+    {% endfor %}
+  </ul>
+</div>
+{% endblock %}
+```
+
+
+
 ## 04-Database-Project-Instructions
 
+```
+이 프로젝트에서는 이전 웹 사이트에 "소유자(Owner)" 모델을 추가하여 모든 학습 내용을 통합해볼 것입니다. 이 프로젝트를 진행하는 방법은 다음과 같습니다:
+
+코드를 따라하며 프로젝트 진행하기: 해당 섹션의 비디오를 시청하며 코드를 작성해보세요.
+아래의 안내에 따라 진행하기: 아래의 단계를 따라가면서 프로젝트를 진행해보세요.
+처음부터 완전히 스크래치에서 시작하기: 가장 도전적인 방법으로 처음부터 프로젝트를 시작해보세요.
+다음은 프로젝트를 위한 일반적인 단계입니다. 자세한 내용은 프로젝트 개요 비디오를 시청하여 확인하세요.
+
+"03-Databases-in-Views" 폴더를 복사하거나 복제하세요.
+"Owners" 모델을 추가하세요 (02-Relationships 강의에서 본 모델과 유사한 형태입니다).
+강아지와 소유자 간의 관계를 만들어보세요 (일대일 관계).
+강아지의 repr 메서드를 업데이트하여 소유자 정보를 표시하도록 변경하세요.
+Owner 모델을 마이그레이션하고 업그레이드하기 위해 플라스크 db 커맨드 라인 인자를 사용하세요.
+새로운 소유자를 데이터베이스에 추가하는 뷰와 폼을 생성하세요. 이때 추가되는 소유자를 강아지와 연결해야 합니다 (강아지 id 사용).
+새로운 소유자가 추가되었을 때, 해당 소유자의 이름을 나타내는 Flash() 메시지를 출력하세요.
+리스트 뷰로 돌아가서 새로운 소유자와 해당 강아지를 확인하세요.
+주석 부분을 삭제하고 위의 내용을 한국어로 정리해드렸습니다. 이 단계를 따라하며 프로젝트를 진행해보세요.
+```
+
+
+
 ## 04-Project-Solutions
+
+```python
+# forms.py
+from flask_wtf import FlaskForm
+from wtforms import StringField, IntegerField, SubmitField
+
+class AddForm(FlaskForm):
+    name = StringField('Name of Puppy:')  # 강아지 이름 입력 필드
+    submit = SubmitField('Add Puppy')  # 강아지 추가 버튼
+
+class AddOwnerForm(FlaskForm):
+    name = StringField('Name of Owner:')  # 주인 이름 입력 필드
+    pup_id = IntegerField("Id of Puppy: ")  # 강아지 아이디 입력 필드
+    submit = SubmitField('Add Owner')  # 주인 추가 버튼
+
+class DelForm(FlaskForm):
+    id = IntegerField('Id Number of Puppy to Remove:')  # 제거할 강아지 아이디 입력 필드
+    submit = SubmitField('Remove Puppy')  # 강아지 제거 버튼
+```
+
+```
+
+```
 
 
 
