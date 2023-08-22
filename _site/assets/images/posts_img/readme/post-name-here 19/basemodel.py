@@ -1,7 +1,7 @@
+# Define Pydantic models
 from pydantic import BaseModel
 from datetime import date
 
-# Define Pydantic models
 class User(BaseModel):
     id: int
     name: str

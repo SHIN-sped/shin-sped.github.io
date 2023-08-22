@@ -412,8 +412,7 @@ print(rufus.report_toys())
 
 ## 03-Databases-in-Views
 
-```python
-# forms.py
+```
 
 ```
 
