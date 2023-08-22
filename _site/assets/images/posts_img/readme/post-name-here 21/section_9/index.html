@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>What breed are you?</title>
+</head>
+<body>
+    <h1>What breed are you?</h1>
+
+    <form action="/" method="POST">
+        <input type="text" name="breed" placeholder="Your breed" value="{{ breed }}" class="some-css-class">
+        <input type="submit" value="Submit">
+    </form>
+
+    <p>
+        {% if breed %}
+        The breed you entered is {{ breed }}
+        Update it in the form below:
+        {% else %}
+        {% endif %}
+    </p>
+
+    <form method="POST">
+        {{ form.hidden_tag() }}
+        {{ form.breed.label }} {{ form.breed(class='some-css-class') }}
+        {{ form.submit() }}
+    </form>
+</body>
+</html>
+<!-- <p>
+
+{% if breed %}
+The breed you entered is {{breed}}
+Update it in the form below:
+{% else %}
+{% endif %}
+</p>
+
+<form method="POST">
+    {{ form.hidden_tag() }}
+    {{ form.breed.label }} {{ form.breed(class='some-css-class') }}
+    {{ form.submit() }}
+</form> -->
