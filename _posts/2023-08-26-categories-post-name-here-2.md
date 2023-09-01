@@ -108,7 +108,7 @@ last_modified_at: 2023-08-26
 
 
 
-![/Users/hextriplej/Documents/GitHub/shin-sped.github.io/_site/assets/images/posts_img/readme/post-name-here 22/MachineLearningAlgorithms.png](/Users/hextriplej/Documents/GitHub/shin-sped.github.io/_site/assets/images/posts_img/readme/post-name-here 22/MachineLearningAlgorithms.png)
+![/GitHub/shin-sped.github.io/_site/assets/images/posts_img/readme/post-name-here 22/MachineLearningAlgorithms.png](/GitHub/shin-sped.github.io/_site/assets/images/posts_img/readme/post-name-here 22/MachineLearningAlgorithms.png)
 
 ### 딥러닝 - 뇌의 정보처리 방식을 모사한 "인공신경망"과 유사하게 여러 층(Layer)으로 깊이있게(Deep) 구성하여 학습을 진행
 
@@ -190,16 +190,6 @@ last_modified_at: 2023-08-26
 
 
 
-
-## 코딩이 필요없는 AIDU ez 활용법
-
-
-
-## AI 구현 프로세스
-
-
-
-##  
 
 
 
